@@ -1,0 +1,12 @@
+name: Docker Manifest
+description: Creates a Docker manifest image, given a target image name and a set of source image names.
+author: https://github.com/cultureamp
+requirements: ["docker"]
+configuration:
+  properties:
+    image-name:
+      type: string
+    source-image-names:
+      type: [string, array]
+      minimum: 1
+  additionalProperties: false
