@@ -1,9 +1,11 @@
 #!/usr/bin/env bats
 
-load '/usr/local/lib/bats/load.bash'
+setup() {
+  load "$BATS_PLUGIN_PATH/load.bash"
 
-# Uncomment the following line to debug stub failures
-# export BUILDKITE_AGENT_STUB_DEBUG=/dev/tty
+  # Uncomment to enable stub debugging
+  # export GIT_STUB_DEBUG=/dev/tty
+}
 
 @test "Fails when image-name not provided" {
   run "$PWD/hooks/command"
