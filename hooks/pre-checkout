@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+
+# shellcheck source=lib/shared.bash
+. "$DIR/../lib/shared.bash"
+
+
+function main(){
+  local allow_checkout; allow_checkout="$(plugin_read_config "ALLOW_CHECKOUT" "false")"
+
+  if [[ "${allow_checkout}" == "false" ]]; then
+    echo "~~~ :git: docker manifest plugin: Disabling local checkout"
+    echo "If this is required, pass 'allow-checkout: true' to the plugin config."
+
+    export BUILDKITE_REPO=""
+  fi
+}
+
+main "$@"
