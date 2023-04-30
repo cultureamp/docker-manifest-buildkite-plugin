@@ -10,4 +10,5 @@ configuration:
     source-image-names:
       type: [string, array]
       minimum: 1
+  required: [ "image-name", "source-image-names" ]
   additionalProperties: false
